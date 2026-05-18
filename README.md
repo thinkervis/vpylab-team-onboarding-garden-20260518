@@ -1,29 +1,37 @@
 # 팀 온보딩 샘플: 무지개 정원 구조대
 
-> VPyLab에서 만든 3D Python 작품입니다.
+고등학교 1학년 초보 팀이 VPyLab 팀 프로젝트 흐름을 익히기 위한 샘플입니다.
+코드는 일부러 어렵게 만들지 않았고, 저장 이력에서 “시행착오 → 해결 → 확장”이 보이도록 구성했습니다.
 
-고1 초보 팀이 저장 이력과 시행착오를 이해할 수 있도록 만든 VPyLab 온보딩 프로젝트입니다.
+## 프로젝트 흐름
 
-## 빠르게 보기
+1. **기본 장면 만들기**
+   - `sphere`, `box`, `label`로 꽃밭을 만듭니다.
+2. **움직임 추가와 문제 발견**
+   - 구조대 공을 움직였지만 처음에는 화면 밖으로 사라집니다.
+3. **조건문으로 문제 해결**
+   - `if hero.pos.x > 3.7 or hero.pos.x < -3.7:` 조건으로 방향을 바꿉니다.
+4. **팀원이 이어받기 좋게 확장**
+   - 구름, 꽃 숨쉬기 효과, TODO를 추가합니다.
+5. **일지로 과정 정리**
+   - 무엇을 했고, 무엇이 막혔고, 다음 사람이 무엇을 하면 좋은지 남깁니다.
 
-- 🌐 [GitHub Pages 실행 페이지](https://thinkervis.github.io/vpylab-team-onboarding-garden-20260518/)
-- ▶️ [VPyLab에서 이 코드 실행](https://vpylab.vercel.app/sandbox?repo=thinkervis%2Fvpylab-team-onboarding-garden-20260518&autorun=1)
+## 초보자가 읽어야 할 문법
 
-> 처음 만든 직후에는 GitHub Pages 배포가 1~2분 걸릴 수 있습니다. 링크가 404로 보이면 잠시 뒤 새로고침하거나, VPyLab에서 GitHub로 다시 로그인한 뒤 프로젝트를 한 번 저장해주세요.
+- `sphere(...)`: 구 만들기
+- `box(...)`: 상자 만들기
+- `for i in range(7)`: 같은 일을 7번 반복하기
+- `while True` + `rate(60)`: 계속 움직이는 장면 만들기
+- `if`: 조건에 따라 행동 바꾸기
 
-## 파일
+## 팀원이 다음에 해볼 일
 
-- `main.py` — 최신 코드 (저장할 때마다 갱신)
-- `history.md` — 저장 시점·메시지·작성자 누적 기록
-- `index.html` — GitHub Pages용 독립 실행 페이지
+- 방향키로 구조대 공 조종하기
+- 꽃에 팀원 이름표 붙이기
+- 나비를 추가하고 꽃 주변을 돌게 만들기
+- 공이 꽃에 닿으면 색이 바뀌게 만들기
 
-## git log로 이력 보기
+## 링크
 
-```
-git log --oneline -- main.py
-```
-
-또는 GitHub에서 [`Commits`](https://github.com/thinkervis/vpylab-team-onboarding-garden-20260518/commits/main) 탭 클릭.
-
----
-*VPyLab — Python으로 3D 세계를 만드는 교육 플랫폼*
+- 실행 페이지: https://thinkervis.github.io/vpylab-team-onboarding-garden-20260518/
+- VPyLab 초대 코드: `7327eabb`
