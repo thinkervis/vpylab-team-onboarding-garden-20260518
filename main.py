@@ -10,7 +10,7 @@ from vpython import *
 scene_background(color.cyan)
 
 label(pos=vector(0, 3.2, 0), text="무지개 정원 구조대", height=18, color=color.white)
-label(pos=vector(0, 2.8, 0), text="구름 클릭: 비 · 땅의 공 클릭: 소리 · 드래그: 공 부르기", height=8, color=color.black)
+label(pos=vector(0, 2.8, 0), text="구름 클릭: 비 · 공 클릭: 도레미파솔라시도 · 드래그: 공 부르기", height=8, color=color.black)
 
 # 1. 기본 무대
 box(pos=vector(0, -0.1, 0), size=vector(8, 0.2, 5), color=color.green)
@@ -49,7 +49,7 @@ hero.attach_trail(color=color.white, retain=50)
 click_marker = sphere(pos=vector(0, 0.85, 1.3), radius=0.04, color=color.yellow)
 
 # 5. 소리 + 마우스 이벤트: 구름은 비, 땅의 공은 소리, 드래그는 이동
-garden_notes = ['도4', '미4', '솔4', '높은도4']
+garden_notes = ['도4', '레4', '미4', '파4', '솔4', '라4', '시4', '높은도4']
 note_index = 0
 
 # 5. 시행착오 포인트:
