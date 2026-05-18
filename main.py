@@ -36,6 +36,10 @@ hero = sphere(pos=vector(-3.5, 0.45, 1.3), radius=0.25, color=color.white)
 hero.velocity = vector(0.05, 0, 0)
 hero.attach_trail(color=color.white, retain=50)
 
+# 5. 소리: 공이 벽에 닿을 때마다 짧은 음을 냅니다.
+garden_notes = ['도4', '미4', '솔4', '높은도4']
+note_index = 0
+
 # 5. 시행착오 포인트:
 # 처음에는 벽 조건을 안 넣으면 공이 화면 밖으로 사라진다.
 # 그래서 if 조건문으로 방향을 바꾸도록 수정했다.
@@ -48,6 +52,8 @@ while True:
     # 공이 정원 끝에 닿으면 반대 방향으로 돌아오기
     if hero.pos.x > 3.7 or hero.pos.x < -3.7:
         hero.velocity.x = -hero.velocity.x
+        play_note(garden_notes[note_index], duration=0.18, type='sine', volume=0.25)
+        note_index = (note_index + 1) % len(garden_notes)
 
     # 꽃이 살짝살짝 숨 쉬는 효과
     for i in range(7):
@@ -58,3 +64,4 @@ while True:
 # - 꽃에 이름표 붙이기
 # - 나비를 추가하고 꽃 주변을 돌게 만들기
 # - 공이 꽃에 닿으면 색이 바뀌게 만들기
+# - 음표 리스트를 바꿔 우리 팀만의 멜로디 만들기
