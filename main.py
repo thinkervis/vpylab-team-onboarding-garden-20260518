@@ -5,12 +5,12 @@ from vpython import *
 # - sphere, box, label로 장면 만들기
 # - while True + rate()로 움직임 만들기
 # - if 조건문으로 문제를 고치기
-# - TODO를 남겨 팀원이 이어서 개발하기
+# - 키보드 없이도 마우스 클릭/드래그로 상호작용하기
 
 scene_background(color.cyan)
 
 label(pos=vector(0, 3.2, 0), text="무지개 정원 구조대", height=18, color=color.white)
-label(pos=vector(0, 2.8, 0), text="꽃을 지키는 공이 좌우로 움직입니다. 팀원이 이어서 구름/나비/점수를 추가해보세요!", height=8, color=color.black)
+label(pos=vector(0, 2.8, 0), text="마우스 클릭/드래그: 구조대 공을 부르고 가까운 꽃 색을 바꿉니다", height=8, color=color.black)
 
 # 1. 기본 무대
 box(pos=vector(0, -0.1, 0), size=vector(8, 0.2, 5), color=color.green)
@@ -35,8 +35,9 @@ for x in [-2.5, 0, 2.5]:
 hero = sphere(pos=vector(-3.5, 0.45, 1.3), radius=0.25, color=color.white)
 hero.velocity = vector(0.05, 0, 0)
 hero.attach_trail(color=color.white, retain=50)
+click_marker = sphere(pos=vector(0, 0.85, 1.3), radius=0.04, color=color.yellow)
 
-# 5. 소리: 공이 벽에 닿을 때마다 짧은 음을 냅니다.
+# 5. 소리 + 마우스 이벤트: 클릭하면 공이 클릭한 쪽으로 움직입니다.
 garden_notes = ['도4', '미4', '솔4', '높은도4']
 note_index = 0
 
@@ -46,6 +47,19 @@ note_index = 0
 
 while True:
     rate(60)
+
+    # 마우스 클릭/드래그: 화면 가로 위치를 정원 좌표처럼 써서 공을 부르기
+    mouse = scene.mouse
+    if mouse and mouse.down:
+        target_x = max(-3.7, min(3.7, mouse.pos.x))
+        hero.velocity.x = 0.08 if target_x > hero.pos.x else -0.08
+        click_marker.pos = vector(target_x, 0.85, 1.3)
+        click_marker.radius = 0.18
+        nearest = int(round(target_x + 3))
+        if 0 <= nearest < len(flowers):
+            flowers[nearest].color = colors[(nearest + note_index) % len(colors)]
+    else:
+        click_marker.radius = 0.04
 
     hero.pos = hero.pos + hero.velocity
 
@@ -60,7 +74,7 @@ while True:
         flowers[i].radius = 0.28 + 0.04 * abs(hero.pos.x - (-3 + i)) / 7
 
 # 다음 팀원이 해볼 TODO
-# - 방향키로 hero 조종하기
+# - 클릭할 때 점수 올리기
 # - 꽃에 이름표 붙이기
 # - 나비를 추가하고 꽃 주변을 돌게 만들기
 # - 공이 꽃에 닿으면 색이 바뀌게 만들기
