@@ -34,7 +34,7 @@ for x in [-2.5, 0, 2.5]:
 # 4. 움직이는 정원 구조대 공
 hero = sphere(pos=vector(-3.5, 0.45, 1.3), radius=0.25, color=color.white)
 hero.velocity = vector(0.05, 0, 0)
-hero.attach_trail(color=color.white, radius=0.03, retain=50)
+hero.attach_trail(color=color.white, retain=50)
 
 # 5. 시행착오 포인트:
 # 처음에는 벽 조건을 안 넣으면 공이 화면 밖으로 사라진다.

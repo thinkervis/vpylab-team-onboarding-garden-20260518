@@ -5,6 +5,14 @@
 
 ---
 
+## 2026-05-18 11:57:06
+
+- 메시지: 🐛 attach_trail radius 옵션 제거
+- 작성자: thinkervis
+- 출처: manual
+- VPyLab revision: `d9a55239-713c-4c2f-a0f0-9eacc9e9f179`
+
+
 ## 2026-05-18 11:50:14
 
 - 메시지: 4턴: 구름과 꽃 숨쉬기 효과 추가
